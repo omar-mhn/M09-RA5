@@ -22,11 +22,22 @@ public class RotX{
         }
         return new String(chars);
     }
+    public static String desxifraRotX( String cadena, int desplaçament ){
+        return "";
+    }
+    public static void forcaBrutaRotX( String cadenaXifrada ){
+        for (int i = 0 ;i < minuscules.length ; i++){
+            System.out.println(xifraRotX(cadenaXifrada, i)); 
+        }
+    }
    
 
 public static void main(String[] args) {
     System.out.println(xifraRotX("ABC",0)); 
-    System.out.println(xifraRotX("hola",0)); 
+    System.out.println(xifraRotX("hola",0));
+
+    
+    forcaBrutaRotX("hola");
     
 
 }
