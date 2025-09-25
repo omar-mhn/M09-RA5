@@ -1,38 +1,37 @@
 
 public class Rot13 {
 
-public static char xifraRot13(char cadena) {
-    char[] minuscules = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    char[] majuscules = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
-    for (int i = 0; i < minuscules.length; i++) {
-        if (cadena == minuscules[i]) {
-            return minuscules[(i + 13) % minuscules.length];
+    public static String xifraRot13(String cadena) {
+        char[] minuscules = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
+        char[] majuscules = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+        // ici j'ai transformè le texte en tableau 
+        char [] chars = cadena.toCharArray();
+        for (int j = 0; j < chars.length; j++) {
+            // crée une variable temporaire c qui contient ce caractère pour pouvoir le manipuler plus facilement dans la boucle
+            char c = chars[j];
+            for (int i = 0; i < minuscules.length; i++) {
+                if ( c == minuscules[i]){
+                    chars[j] = minuscules[(i + 13) % minuscules.length]  ;
+                    break;
+                }
+                if ( c == majuscules[i]){
+                    chars[j] = majuscules[(i + 13) % majuscules.length]  ;
+                    break ;
+                }
+            }
         }
-        if (cadena == majuscules[i]) {
-            return majuscules[(i + 13) % minuscules.length];
-        }
+        return new String(chars);
     }
-    return cadena; 
-}
-public static char desxifraRot13( char cadena ){
-      char[] minuscules = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    char[] majuscules = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
-    for (int i = 0; i < minuscules.length; i++) {
-        if (cadena == minuscules[i]) {
-            return minuscules[(i - 13) % minuscules.length];
-        }
-        if (cadena == majuscules[i]) {
-            return majuscules[(i - 13) % minuscules.length];
-        }
+    // ici j'appelle une deuxieme fois la xifra pour faire un autre tour car c'est symétrique  le chiffrement et le déchiffrement sont identiques 
+     public static String desxifraRot13(String cadena) {
+        
+        return xifraRot13(cadena);
     }
-    return cadena; 
-}
 
 public static void main(String[] args) {
-    System.out.println(xifraRot13('a')); 
-    System.out.println(desxifraRot13('n'));
+    System.out.println(xifraRot13("ABC")); 
+    System.out.println(xifraRot13("hola")); 
+    
 
 }
 }
