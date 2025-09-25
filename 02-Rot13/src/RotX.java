@@ -27,7 +27,7 @@ public class RotX{
     }
     public static void forcaBrutaRotX( String cadenaXifrada ){
         for (int i = 0 ;i < minuscules.length ; i++){
-            System.out.println(xifraRotX(cadenaXifrada, i)); 
+            System.out.println("("+ i + ") -> "+xifraRotX(cadenaXifrada, i)); 
         }
     }
    
