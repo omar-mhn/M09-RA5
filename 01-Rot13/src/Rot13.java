@@ -32,12 +32,12 @@ public class Rot13 {
             char c = chars[j];
             for (int i = 0; i < MINUSCULES .length; i++) {
                 if ( c == MINUSCULES [i]){
-                    chars[j] = MINUSCULES[(i - 13) + (MINUSCULES.length % MINUSCULES.length)];
+                    chars[j] = MINUSCULES[( (i - 13 + MINUSCULES.length) % MINUSCULES.length )];
 
                     break;
                 }
                 if ( c == MAJUSCULES[i]){
-                    chars[j] = MAJUSCULES[( (i - 13 + MAJUSCULES.length) % MAJUSCULES.length )]  ;
+                    chars[j] = MAJUSCULES[( (i - 13 + MAJUSCULES.length) % MAJUSCULES.length )];  ;
                     break ;
                 }
             }
