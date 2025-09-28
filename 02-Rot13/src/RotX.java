@@ -33,8 +33,10 @@ public class RotX{
    
 
 public static void main(String[] args) {
-    System.out.println(xifraRotX("ABC",-1)); 
+    System.out.println(xifraRotX("ABC",1)); 
+    System.out.println(desxifraRotX("ÀCÇ", 1));
     System.out.println(xifraRotX("hola",3));
+    System.out.println(desxifraRotX("ípñb", 3));
 
     
     forcaBrutaRotX("hola");
