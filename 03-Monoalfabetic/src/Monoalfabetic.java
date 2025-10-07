@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class Monoalfabetic {
-    final static char[] alfabet = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    final static Character[] permuta = permutaAlfabet(alfabet);
+    final static char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    final static Character[] PERMUTA = PERMUTAALFABET(ALFABET);
 
-    public static Character[] permutaAlfabet(char[] alfabet) {
+    public static Character[] PERMUTAALFABET(char[] ALFABET) {
         List<Character> liste = new ArrayList<>();
-        for (char c : alfabet) {
+        for (char c : ALFABET) {
             liste.add(c);
             }
             Collections.shuffle(liste);
@@ -23,8 +23,8 @@ public class Monoalfabetic {
                     // -1 (signifie “non trouvé”)
                     int index = -1;
                     // chercher l’index dans l’alphabet
-                    for (int i = 0; i < alfabet.length; i++) {
-                        if (alfabet[i] == upper) {
+                    for (int i = 0; i < ALFABET.length; i++) {
+                        if (ALFABET[i] == upper) {
                             index = i;
                             break;
                         }
@@ -32,7 +32,7 @@ public class Monoalfabetic {
                     
                     if (index != -1) {
                         
-                        char chiff = permuta[index];
+                        char chiff = PERMUTA[index];
                         // si c’était une minuscule, on convertit en minuscule
                         if (isLower) chiff = Character.toLowerCase(chiff);
                         resultat.append(chiff);
@@ -50,8 +50,8 @@ public class Monoalfabetic {
 
         int index = -1;
        
-        for (int i = 0; i < permuta.length; i++) {
-            if (permuta[i] == upper) {
+        for (int i = 0; i < PERMUTA.length; i++) {
+            if (PERMUTA[i] == upper) {
                 index = i;
                 break;
             }
@@ -59,7 +59,7 @@ public class Monoalfabetic {
 
         if (index != -1) {
             
-            char dechiff = alfabet[index];
+            char dechiff = ALFABET[index];
             
             if (isLower) dechiff = Character.toLowerCase(dechiff);
             resultat.append(dechiff);
@@ -73,8 +73,9 @@ public class Monoalfabetic {
 }
 
     public static void main(String[] args) {
-        System.out.println(xifraMonoAlfa("hola")); 
-        System.out.println(desxifraMonoAlfa("HOLA"));
+        String a = xifraMonoAlfa("hola");
+        System.out.println(a); 
+        System.out.println(desxifraMonoAlfa(a));
         
     }
     
