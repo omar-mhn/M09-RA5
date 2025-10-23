@@ -1,10 +1,10 @@
 package iticbcn.xifratge;
 
 public class XifradorRot13 {
-    final static char[] MINUSCULES = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
-    final static char[] MAJUSCULES = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    final  char[] MINUSCULES = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
+    final  char[] MAJUSCULES = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
 
-    public static String xifraRot13(String cadena) {
+    public  String xifraRot13(String cadena) {
        
         // ici j'ai transformè le texte en tableau 
         char [] chars = cadena.toCharArray();
@@ -24,7 +24,7 @@ public class XifradorRot13 {
         }
         return new String(chars);
     }
-     public static String desxifraRot13(String cadena) {
+     public  String desxifraRot13(String cadena) {
         
           // ici j'ai transformè le texte en tableau 
         char [] chars = cadena.toCharArray();
@@ -46,7 +46,7 @@ public class XifradorRot13 {
         return new String(chars);
     }
 
-public static void main(String[] args) {
+public  void main(String[] args) {
     System.out.println(xifraRot13("ABC")); 
     System.out.println(desxifraRot13("IÏJ"));
     System.out.println(xifraRot13("hola")); 

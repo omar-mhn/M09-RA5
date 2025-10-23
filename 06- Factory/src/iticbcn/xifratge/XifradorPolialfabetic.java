@@ -1,18 +1,20 @@
+package iticbcn.xifratge;
+
 import java.util.*;
 
-public class Polialfabetic{
+public class XifradorPolialfabetic{
     
-    final static char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    static Random random;
-    static Character[] PERMUTA ;
-    final private static long clauSecreta = 1234;
+    final  char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+     Random random;
+     Character[] PERMUTA ;
+    final private  long clauSecreta = 1234;
     
 
-    public static void initRandom(long seed) {
+    public  void initRandom(long seed) {
         random = new Random(seed);
     }
 
-    public static Character[] permutaAlfabet(char[] ALFABET) {
+    public  Character[] permutaAlfabet(char[] ALFABET) {
         List<Character> liste = new ArrayList<>();
         for (char c : ALFABET) {
             liste.add(c);
@@ -22,7 +24,7 @@ public class Polialfabetic{
             return liste.toArray(new Character[liste.size()]); 
     }
 
-    public static String xifraPoliAlfa(String msg){
+    public  String xifraPoliAlfa(String msg){
         StringBuilder resultat = new StringBuilder(); 
             PERMUTA = permutaAlfabet(ALFABET);
                 for (char c : msg.toCharArray()) {
@@ -54,7 +56,7 @@ public class Polialfabetic{
         return resultat.toString(); 
     }
 
-    public static String desxifraPoliAlfa(String msgXifrat){
+    public  String desxifraPoliAlfa(String msgXifrat){
         StringBuilder resultat = new StringBuilder(); 
         
     for (char c : msgXifrat.toCharArray()) {
@@ -85,7 +87,7 @@ public class Polialfabetic{
     return resultat.toString(); 
     }
 
-    public static void main(String[] args) {
+    public  void main(String[] args) {
         String msgs[] = {"Test 01 àrbitre,coixi,Perímetre",
                         "Test 02 Taüll,DÍA,año",
                         "Test 03 Perça, Òrrius,Bòvila"};

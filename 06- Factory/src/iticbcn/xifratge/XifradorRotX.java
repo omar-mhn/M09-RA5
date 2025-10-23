@@ -1,11 +1,11 @@
 package iticbcn.xifratge;
 
 public class XifradorRotX{
-    private static char[] minuscules = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
-    private static char[] majuscules = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    private  char[] minuscules = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
+    private  char[] majuscules = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
 
 
-     public static String xifraRotX(String cadena, int desplaçament) {
+     public  String xifraRotX(String cadena, int desplaçament) {
         // ici j'ai transformè le texte en tableau 
         char [] chars = cadena.toCharArray();
         for (int j = 0; j < chars.length; j++) {
@@ -24,17 +24,17 @@ public class XifradorRotX{
         }
         return new String(chars);
     }
-    public static String desxifraRotX( String cadena, int desplaçament ){
+    public  String desxifraRotX( String cadena, int desplaçament ){
         return xifraRotX(cadena, - desplaçament);
     }
-    public static void forcaBrutaRotX( String cadenaXifrada ){
+    public  void forcaBrutaRotX( String cadenaXifrada ){
         for (int i = 0 ;i < minuscules.length ; i++){
             System.out.println("("+ i + ") -> "+xifraRotX(cadenaXifrada, i)); 
         }
     }
    
 
-public static void main(String[] args) {
+public  void main(String[] args) {
     System.out.println(xifraRotX("ABC",1)); 
     System.out.println(desxifraRotX("ÀCÇ", 1));
     System.out.println(xifraRotX("hola",3));

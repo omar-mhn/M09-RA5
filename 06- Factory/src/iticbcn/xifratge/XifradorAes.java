@@ -9,16 +9,16 @@ import java.security.*;
 
 public class XifradorAes {
 
-    public static final String ALGORISME_XIFRAT= "AES";
-    public static final String ALGORISME_HASH = "sha-256";
-    public static final String FORMAT_AES ="AES/CBC/PKCS5Padding";
+    public  final String ALGORISME_XIFRAT= "AES";
+    public  final String ALGORISME_HASH = "sha-256";
+    public  final String FORMAT_AES ="AES/CBC/PKCS5Padding";
 
-    private static final int MIDA_IV = 16;
-    private static byte[] iv = new byte [MIDA_IV];
-    private static final String CLAU = "Omar123";
+    private  final int MIDA_IV = 16;
+    private  byte[] iv = new byte [MIDA_IV];
+    private  final String CLAU = "Omar123";
 
 
-        public static byte[] xifraAES (String msg, String password) throws Exception{
+        public  byte[] xifraAES (String msg, String password) throws Exception{
             //obtenir els bytes de l'string
             byte msgBytes[] = msg.getBytes();
 
@@ -60,7 +60,7 @@ public class XifradorAes {
             // return iv + mshxifrat 
             return result;
         }
-    public static String desxifraAES(byte[] bIvIMsgXifrat,String clau) throws Exception {
+    public  String desxifraAES(byte[] bIvIMsgXifrat,String clau) throws Exception {
 
         // Extreure lIV
         //On récupère les 16 premiers bytes du tableau, qui correspondent à l’IV utilisé lors du chiffrement.
@@ -92,7 +92,7 @@ public class XifradorAes {
 
     }
 
-    public static void main(String[] args) {
+    public  void main(String[] args) {
     String msgs[] = {"Lorem ipsum dicet",
     "Hola Andrés cómo está tu cuñado",
     "Agora lila Ótto"};

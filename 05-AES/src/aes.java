@@ -5,7 +5,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 
-public class aes {
+public class AES {
 
     public static final String ALGORISME_XIFRAT= "AES";
     public static final String ALGORISME_HASH = "sha-256";

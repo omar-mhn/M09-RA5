@@ -1,10 +1,12 @@
+package iticbcn.xifratge;
+
 import java.util.*;
 
-public class Monoalfabetic {
-    final static char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    final static Character[] PERMUTA = PERMUTAALFABET(ALFABET);
+public class XifradorMonoalfabetic {
+    final  char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    final  Character[] PERMUTA = PERMUTAALFABET(ALFABET);
 
-    public static Character[] PERMUTAALFABET(char[] ALFABET) {
+    public Character[] PERMUTAALFABET(char[] ALFABET) {
         List<Character> liste = new ArrayList<>();
         for (char c : ALFABET) {
             liste.add(c);
@@ -13,9 +15,12 @@ public class Monoalfabetic {
             return liste.toArray(new Character[liste.size()]); 
         }
 
-        public static String xifraMonoAlfa(String cadena) {
+        public XifradorMonoalfabetic() {
+        }
 
-                StringBuilder resultat = new StringBuilder(); 
+        public String xifraMonoAlfa(String cadena) {
+
+            StringBuilder resultat = new StringBuilder(); 
 
                 for (char c : cadena.toCharArray()) {
                     boolean isLower = Character.isLowerCase(c);   // savoir si c’est une minuscule
@@ -41,7 +46,7 @@ public class Monoalfabetic {
 
         return resultat.toString(); // retourne la chaîne chiffrée
     }
-    public static String desxifraMonoAlfa(String cadena) {
+    public String desxifraMonoAlfa(String cadena) {
     StringBuilder resultat = new StringBuilder(); 
 
     for (char c : cadena.toCharArray()) {
@@ -72,7 +77,7 @@ public class Monoalfabetic {
     return resultat.toString(); 
 }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         String a = xifraMonoAlfa("hola");
         System.out.println(a); 
         System.out.println(desxifraMonoAlfa(a));
