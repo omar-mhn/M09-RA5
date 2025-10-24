@@ -92,7 +92,7 @@ public class XifradorAes {
 
     }
 
-    public  void main(String[] args) {
+  /*  public  void main(String[] args) {
     String msgs[] = {"Lorem ipsum dicet",
     "Hola Andrés cómo está tu cuñado",
     "Agora lila Ótto"};
@@ -107,6 +107,7 @@ public class XifradorAes {
             desxifrat = desxifraAES(bXifrats, CLAU);
         } catch (Exception e) {
             System.err.println("Error de xifrat: " + e.getLocalizedMessage());
+             System.exit(1);
         }
         System.out.println("---");
         System.out.println("Msg: " + msg);
@@ -114,5 +115,5 @@ public class XifradorAes {
         System.out.println("DEC: " + desxifrat);
     }
 }
-
+ */
 }

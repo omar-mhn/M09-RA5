@@ -4,7 +4,7 @@ import java.util.*;
 
 public class XifradorMonoalfabetic {
     final  char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    final  Character[] PERMUTA = PERMUTAALFABET(ALFABET);
+    Character[] PERMUTA;
 
     public Character[] PERMUTAALFABET(char[] ALFABET) {
         List<Character> liste = new ArrayList<>();
@@ -16,9 +16,13 @@ public class XifradorMonoalfabetic {
         }
 
         public XifradorMonoalfabetic() {
+            PERMUTA = PERMUTAALFABET(ALFABET);
         }
 
-        public String xifraMonoAlfa(String cadena) {
+        public String xifraMonoAlfa(String cadena,String clau) throws ClauNoSuportada {
+            if (clau != null) {
+                throw new ClauNoSuportada("Clau no suportada: la clau ha de ser null");
+            }
 
             StringBuilder resultat = new StringBuilder(); 
 
@@ -46,7 +50,11 @@ public class XifradorMonoalfabetic {
 
         return resultat.toString(); // retourne la chaîne chiffrée
     }
-    public String desxifraMonoAlfa(String cadena) {
+    public String desxifraMonoAlfa(String cadena, String clau) throws ClauNoSuportada {
+        if (clau != null) {
+                throw new ClauNoSuportada("Clau no suportada: la clau ha de ser null");
+            }
+
     StringBuilder resultat = new StringBuilder(); 
 
     for (char c : cadena.toCharArray()) {
@@ -77,11 +85,11 @@ public class XifradorMonoalfabetic {
     return resultat.toString(); 
 }
 
-    public void main(String[] args) {
-        String a = xifraMonoAlfa("hola");
-        System.out.println(a); 
-        System.out.println(desxifraMonoAlfa(a));
+   // public void main(String[] args) {
+    //    String a = xifraMonoAlfa("hola");
+    //    System.out.println(a); 
+    //    System.out.println(desxifraMonoAlfa(a));
         
-    }
+   // }
     
 }

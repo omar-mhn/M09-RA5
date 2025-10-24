@@ -24,7 +24,15 @@ public class XifradorPolialfabetic{
             return liste.toArray(new Character[liste.size()]); 
     }
 
-    public  String xifraPoliAlfa(String msg){
+    public  String xifraPoliAlfa(String msg,String clau) throws ClauNoSuportada{
+         long seed;
+    try {
+        seed = Long.parseLong(clau);
+    } catch (NumberFormatException e) {
+        throw new ClauNoSuportada("Clau no suportada: la clau ha de ser un nombre");
+    }
+        initRandom(seed);
+
         StringBuilder resultat = new StringBuilder(); 
             PERMUTA = permutaAlfabet(ALFABET);
                 for (char c : msg.toCharArray()) {
@@ -56,7 +64,15 @@ public class XifradorPolialfabetic{
         return resultat.toString(); 
     }
 
-    public  String desxifraPoliAlfa(String msgXifrat){
+    public  String desxifraPoliAlfa(String msgXifrat,String clau) throws ClauNoSuportada{
+    long seed;
+    try {
+        seed = Long.parseLong(clau);
+    } catch (NumberFormatException e) {
+        throw new ClauNoSuportada("Clau no suportada: la clau ha de ser un nombre");
+    }
+        initRandom(seed);
+
         StringBuilder resultat = new StringBuilder(); 
         
     for (char c : msgXifrat.toCharArray()) {
@@ -87,7 +103,7 @@ public class XifradorPolialfabetic{
     return resultat.toString(); 
     }
 
-    public  void main(String[] args) {
+   /* public  void main(String[] args) { 
         String msgs[] = {"Test 01 àrbitre,coixi,Perímetre",
                         "Test 02 Taüll,DÍA,año",
                         "Test 03 Perça, Òrrius,Bòvila"};
@@ -111,6 +127,6 @@ public class XifradorPolialfabetic{
             
         }
 
-    }
+    }*/
 
 }
