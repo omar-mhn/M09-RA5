@@ -2,7 +2,7 @@ package iticbcn.xifratge;
 
 import java.util.*;
 
-public class XifradorPolialfabetic{
+public class XifradorPolialfabetic implements Xifrador{
     
     final  char[] ALFABET = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
      Random random;
@@ -14,7 +14,7 @@ public class XifradorPolialfabetic{
         random = new Random(seed);
     }
 
-    public  Character[] permutaAlfabet(char[] ALFABET) {
+    public  Character[] permutaAlfabet() {
         List<Character> liste = new ArrayList<>();
         for (char c : ALFABET) {
             liste.add(c);
@@ -24,17 +24,9 @@ public class XifradorPolialfabetic{
             return liste.toArray(new Character[liste.size()]); 
     }
 
-    public  String xifraPoliAlfa(String msg,String clau) throws ClauNoSuportada{
-         long seed;
-    try {
-        seed = Long.parseLong(clau);
-    } catch (NumberFormatException e) {
-        throw new ClauNoSuportada("Clau no suportada: la clau ha de ser un nombre");
-    }
-        initRandom(seed);
-
+    public  String xifraPoliAlfa(String msg){
         StringBuilder resultat = new StringBuilder(); 
-            PERMUTA = permutaAlfabet(ALFABET);
+            
                 for (char c : msg.toCharArray()) {
                     boolean isLower = Character.isLowerCase(c);   // savoir si c’est une minuscule
                     char upper = Character.toUpperCase(c);        
@@ -64,15 +56,7 @@ public class XifradorPolialfabetic{
         return resultat.toString(); 
     }
 
-    public  String desxifraPoliAlfa(String msgXifrat,String clau) throws ClauNoSuportada{
-    long seed;
-    try {
-        seed = Long.parseLong(clau);
-    } catch (NumberFormatException e) {
-        throw new ClauNoSuportada("Clau no suportada: la clau ha de ser un nombre");
-    }
-        initRandom(seed);
-
+    public  String desxifraPoliAlfa(String msgXifrat){
         StringBuilder resultat = new StringBuilder(); 
         
     for (char c : msgXifrat.toCharArray()) {
@@ -101,6 +85,32 @@ public class XifradorPolialfabetic{
     }
 
     return resultat.toString(); 
+    }
+     @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        long seed;
+        try {
+            seed = Long.parseLong(clau);
+        } catch (NumberFormatException e) {
+            throw new ClauNoSuportada("La clau per xifrat Polialfabètic ha de ser un String convertible a long");
+        }
+        initRandom(seed);
+        PERMUTA = permutaAlfabet(); // unique permutation basée sur la clé
+        String resultat = xifraPoliAlfa(msg);
+        return new TextXifrat(resultat.getBytes());
+    }
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        long seed;
+        try {
+            seed = Long.parseLong(clau);
+        } catch (NumberFormatException e) {
+            throw new ClauNoSuportada("La clau per Polialfabètic ha de ser un String convertible a long");
+        }
+        initRandom(seed);
+        PERMUTA = permutaAlfabet(); // même permutation pour déchiffrement
+        return desxifraPoliAlfa(new String(xifrat.getBytes()));
     }
 
    /* public  void main(String[] args) { 

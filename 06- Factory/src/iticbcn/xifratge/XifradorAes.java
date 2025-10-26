@@ -7,7 +7,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 
-public class XifradorAes {
+public class XifradorAes implements Xifrador {
 
     public  final String ALGORISME_XIFRAT= "AES";
     public  final String ALGORISME_HASH = "sha-256";
@@ -90,6 +90,32 @@ public class XifradorAes {
         //return String desxifrat
         return new String(decryptedBytes, StandardCharsets.UTF_8);
 
+    }
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        try {
+            // Appel à la méthode de chiffrement AES
+            byte[] resultat = xifraAES(msg, clau);
+            return new TextXifrat(resultat);
+        } catch (Exception e) {
+            // Afficher l'erreur et sortir du programme
+            System.err.println("Error de xifrat: " + e.getMessage());
+            System.exit(1);
+            return null; // code jamais atteint, mais obligatoire pour compiler
+        }
+    }
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        try {
+            // Appel à la méthode de déchiffrement AES
+            return desxifraAES(xifrat.getBytes(), clau);
+        } catch (Exception e) {
+            // Afficher l'erreur et sortir du programme
+            System.err.println("Error de desxifrat: " + e.getMessage());
+            System.exit(1);
+            return null; // code jamais atteint
+        }
     }
 
   /*  public  void main(String[] args) {

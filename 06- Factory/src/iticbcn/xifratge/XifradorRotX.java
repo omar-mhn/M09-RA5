@@ -1,8 +1,9 @@
 package iticbcn.xifratge;
 
-public class XifradorRotX{
+public class XifradorRotX implements Xifrador{
     private  char[] minuscules = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
     private  char[] majuscules = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    private static final int MAX_CLAU = 40; // Limite de la clé selon le resultat donnee par le prof.
 
 
      public  String xifraRotX(String cadena, int desplaçament) {
@@ -27,23 +28,56 @@ public class XifradorRotX{
     public  String desxifraRotX( String cadena, int desplaçament ){
         return xifraRotX(cadena, - desplaçament);
     }
-    public  void forcaBrutaRotX( String cadenaXifrada ){
-        for (int i = 0 ;i < minuscules.length ; i++){
-            System.out.println("("+ i + ") -> "+xifraRotX(cadenaXifrada, i)); 
+
+    // Vérifie que la clé est un entier valide et dans la plage 0–MAX_CLAU
+    private int validarClau(String clau) throws ClauNoSuportada {
+        try {
+            int desplaçament = Integer.parseInt(clau);
+            if (desplaçament < 0 || desplaçament > MAX_CLAU) {
+                throw new ClauNoSuportada("Clau de RotX ha de ser un sencer de 0 a " + MAX_CLAU);
+            }
+            return desplaçament;
+        } catch (NumberFormatException e) {
+            throw new ClauNoSuportada("Clau de RotX ha de ser un sencer de 0 a " + MAX_CLAU);
         }
     }
-   
 
-public  void main(String[] args) {
-    System.out.println(xifraRotX("ABC",1)); 
-    System.out.println(desxifraRotX("ÀCÇ", 1));
-    System.out.println(xifraRotX("hola",3));
-    System.out.println(desxifraRotX("ípñb", 3));
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        int desplaçament = validarClau(clau);
+        String resultat = xifraRotX(msg, desplaçament);
+        return new TextXifrat(resultat.getBytes());
+    }
 
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        int desplaçament = validarClau(clau);
+        String textXifrat = new String(xifrat.getBytes());
+        return desxifraRotX(textXifrat, desplaçament);
+    }
     
-    forcaBrutaRotX("hola");
-    
 
-}
+            /*
+            public  void forcaBrutaRotX( String cadenaXifrada ){
+                for (int i = 0 ;i < minuscules.length ; i++){
+                    System.out.println("("+ i + ") -> "+xifraRotX(cadenaXifrada, i)); 
+                }
+            }
+            
+        
+                
+                public  void main(String[] args) {
+                    System.out.println(xifraRotX("ABC",1)); 
+                    System.out.println(desxifraRotX("ÀCÇ", 1));
+                    System.out.println(xifraRotX("hola",3));
+                    System.out.println(desxifraRotX("ípñb", 3));
+
+                    
+                    forcaBrutaRotX("hola");
+                    
+
+                }
+                    */
+        
 }
 

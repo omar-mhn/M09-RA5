@@ -4,10 +4,6 @@ import java.util.Arrays;
 
 public class TextXifrat {
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
     private byte[] dades;  
 
     
@@ -18,5 +14,10 @@ public class TextXifrat {
     public byte[] getBytes() {
         return Arrays.copyOf(dades, dades.length); 
     }
-        
+
+    @Override
+    public String toString() {
+        return new String(dades);
+    }
+    
 }
